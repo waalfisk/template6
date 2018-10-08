@@ -6,6 +6,16 @@ This template installs a MongoDB server as container.
 * Credentials: No access restrictions, i.e. no user/pass is set. Make sure nobody have access to the host server
 * smallfiles: The `--smallfiles` flag is applied
 
+## How to use
+1) Download
+
+```
+git clone git@github.com:waalfisk/template6.git mynewname
+cd mynewname
+```
+
+2) Edit `config.conf` to your needs
+
 ## Use cases
 * ELT (Data Lake), cleansed data layer, i.e.
     * "load" raw data into "cleansed" data layer
