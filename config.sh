@@ -44,7 +44,7 @@ run)
     ;;
 start)
     #no fancy echo/print messages
-    docker start -a ${containername} #attach container
+    docker start ${containername} #use -a to see logs
     ;;
 uninstall)
     echo $line
