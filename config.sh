@@ -33,11 +33,11 @@ case "${inarg}" in
 run)
     echo $hline
     echo "Create data container '${datacontainer}' if not exist"
-    docker volume create "${datacontainer}"
+    docker volume create --name "${datacontainer}"
     echo "Instantiate container '${containername}' from the '${mongoimage}:${mongoversion}' image now"
     docker run -it \
         --name "${containername}" \
-        -v "${datacontainer}:/data" \
+        -v "${datacontainer}:/data/db" \
         -p "${containerport}:27017" \
         -d "${mongoimage}:${mongoversion}" --smallfiles
     echo "*** Container Instantiation Completed ***"
