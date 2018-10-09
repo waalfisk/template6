@@ -21,7 +21,7 @@ cd "${folder}"
 #abort if no subcommands given
 if [ $# -lt 1 ]; then
     echo "no subcommands supplied."
-    echo "Usage: ./$0 {run|start|uninstall}"
+    echo "Usage: ./$0 {run|start|uninstall|tabularasa|check}"
     exit 1
 fi
 
@@ -55,8 +55,29 @@ uninstall)
     echo "    Type 'docker rmi ${mongoimage}:${mongoversion}' to delete the base image."
     echo "    Type 'docker volume rm ${datacontainer}' to delete the data volume."
     ;;
+tabularasa)
+    echo $line
+    echo "Delete container '${containername}' now"
+    docker stop "${containername}"
+    docker rm "${containername}"
+    echo "Delete data volume '${datacontainer}' now"
+    docker volume rm "${datacontainer}"
+    echo "Delete image '${mongoimage}:${mongoversion}' now"
+    docker rmi "${mongoimage}:${mongoversion}"
+    ;;
+check)
+    echo $line
+    echo "Base Image exits at ... "
+    docker images | grep "${mongoimage}" | grep "${mongoversion}"
+    echo $line
+    echo "Container runs at ... "
+    docker ps -a | grep ${containername}
+    echo $line
+    echo "Data Volume exits at ... "
+    docker volume ls | grep ${datacontainer}
+    ;;
 *)
-    echo "Usage: ./$0 {run|start|uninstall}"
+    echo "Usage: ./$0 {run|start|uninstall|tabularasa|check}"
     exit 1
 esac #end case-switch
 done #end for-loop

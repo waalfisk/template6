@@ -31,6 +31,8 @@ Use the following commands to install, start, or uninstall the images or contain
 | `vi config.conf` | Increment the version |
 | `./config.sh run` | Instantiate a new MongoDB container |
 | `./config.sh start` | Start the Container again |
+| `./config.sh check` | Display image, container and data volume |
+| `./config.sh tabularasa` | Erase image, container and data volume |
 
 Requires execution rights for `config.sh`.
 For example, run `chmod u+x config.sh` to call `./config.sh ...`.
